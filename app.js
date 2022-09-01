@@ -1,10 +1,15 @@
 const btn = document.getElementById('roll'); 
 let isBtnClickable = true;
+let isGuessClickable = true;
 const result1 = document.querySelector('.die-1');
 const result2 = document.querySelector('.die-2');
 const result3 = document.querySelector('.die-3');
 const result4 = document.querySelector('.die-4');
 const result5 = document.querySelector('.die-5');
+const guess = document.querySelector('.guess');
+const numberOfDice = document.querySelector('.number-of-dice');
+const valueOfDice = document.querySelector('.value-of-dice');
+
 
 const randomNumberGenerator = () => {
   console.log(isBtnClickable);
@@ -34,6 +39,30 @@ const randomNumberGenerator = () => {
 };
 
 btn.addEventListener('click', randomNumberGenerator);
+
+const checkGuess = function (){
+    if(isGuessClickable){
+      isGuessClickable = false;
+      let resultPlayerOne = JSON.parse(localStorage.getItem('Result Player One'));
+      console.log('ciao',resultPlayerOne);
+      let resultFiltered = resultPlayerOne.filter(value => value == valueOfDice.value);
+      console.log(resultFiltered, valueOfDice.value);
+      if(resultFiltered.length == numberOfDice.value){
+        console.log('You win');
+      }
+      else {
+        console.log('You lose');
+      }
+      
+      }
+      else {
+        return
+      }
+    }
+  
+
+guess.addEventListener('click', checkGuess)
+
 // Other types of mouve events 
 // btn.addEventListener('dblclick', randomNumberGenerator);
 // btn.addEventListener('mousedown', randomNumberGenerator);  as soon as the mouse is down
