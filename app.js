@@ -9,6 +9,8 @@ const result5 = document.querySelector('.die-5');
 const guess = document.querySelector('.guess');
 const numberOfDice = document.querySelector('.number-of-dice');
 const valueOfDice = document.querySelector('.value-of-dice');
+let ciao;
+
 
 
 const randomNumberGenerator = () => {
