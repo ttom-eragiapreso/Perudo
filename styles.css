@@ -1,0 +1,46 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-window {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 1px;
+    padding: 20px;
+}
+
+.main-window h1 {
+    margin-bottom: 10px;
+}
+
+.results {
+    display: flex;
+    font-size: 4rem;
+    justify-content: space-between;
+}
+
+.number-of-dice::-webkit-outer-spin-button, .number-of-dice::-webkit-inner-spin-button, .value-of-dice::-webkit-outer-spin-button, .value-of-dice::-webkit-inner-spin-button  {
+    -webkit-appearance: none;
+}
+
+.number-of-dice, .value-of-dice {
+    width: 30px;
+    margin-left: 10px;
+}
+
+button {
+    margin-left: 10px;
+    padding: 5px;
+}
