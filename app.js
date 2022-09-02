@@ -19,9 +19,9 @@ const playerTwoResult2 = document.querySelector('.die-2-1');
 const playerTwoResult3 = document.querySelector('.die-3-1');
 const playerTwoResult4 = document.querySelector('.die-4-1');
 const playerTwoResult5 = document.querySelector('.die-5-1');
-const playerTwoGuess = document.querySelector('.guess');
-const playerTwoNumberOfDice = document.querySelector('.number-of-dice');
-const playerTwoValueOfDice = document.querySelector('.value-of-dice');
+const playerTwoGuess = document.querySelector('.guess-1');
+const playerTwoNumberOfDice = document.querySelector('.number-of-dice-1');
+const playerTwoValueOfDice = document.querySelector('.value-of-dice-1');
 let isBtn1Clickable = true;
 let isGuess1Clickable = true;
 
@@ -31,7 +31,6 @@ let isGuess1Clickable = true;
 
 
 const randomNumberGenerator = () => {
-  console.log(isBtnClickable);
   if(isBtnClickable){
     isBtnClickable = false;
     let randomNumber1 = Math.floor(Math.random()* 6 + 1);
@@ -66,10 +65,12 @@ const checkGuess = function (){
     if(isGuessClickable){
       isGuessClickable = false;
       let resultPlayerOne = JSON.parse(localStorage.getItem('Result Player One'));
-      console.log('ciao',resultPlayerOne);
-      let resultFiltered = resultPlayerOne.filter(value => value == playerOneValueOfDice.value);
-      console.log(resultFiltered, playerOneValueOfDice.value);
-      if(resultFiltered.length == playerOneNumberOfDice.value){
+      let resultPlayerTwo = JSON.parse(localStorage.getItem('Result Player Two'));
+      let resultPlayerOneFiltered = resultPlayerOne.filter(value => value == playerOneValueOfDice.value);
+      let resultPlayerTwoFiltered = resultPlayerTwo.filter(value => value == playerOneValueOfDice.value);
+      let resultCombinedFiltered = resultPlayerOneFiltered.concat(resultPlayerTwoFiltered);
+      console.log(resultCombinedFiltered);
+      if(resultCombinedFiltered.length >= playerOneNumberOfDice.value){
         console.log('You win');
       }
       else {
@@ -80,7 +81,6 @@ const checkGuess = function (){
       else {
         return
       }
-      window.localStorage.clear();
     }
   
 
@@ -115,3 +115,26 @@ const randomNumberGenerator1 = () => {
 }
 btnPlayerTwo.addEventListener('click', randomNumberGenerator1);
 
+const checkGuess1 = function (){
+  if(isGuess1Clickable){
+    isGuess1Clickable = false;
+    let resultPlayerOne = JSON.parse(localStorage.getItem('Result Player One'));
+    let resultPlayerTwo = JSON.parse(localStorage.getItem('Result Player Two'));
+    let resultPlayerOneFiltered = resultPlayerOne.filter(value => value == playerTwoValueOfDice.value);
+    let resultPlayerTwoFiltered = resultPlayerTwo.filter(value => value == playerTwoValueOfDice.value);
+    let resultCombinedFiltered = resultPlayerOneFiltered.concat(resultPlayerTwoFiltered);
+    console.log(resultCombinedFiltered);
+    if(resultCombinedFiltered.length >= playerTwoNumberOfDice.value){
+      console.log('You win');
+    }
+    else {
+      console.log('You lose');
+    }
+    
+    }
+    else {
+      return
+    }
+  }
+
+  playerTwoGuess.addEventListener('click', checkGuess1);
