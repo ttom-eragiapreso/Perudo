@@ -1,55 +1,75 @@
-const btn = document.getElementById('roll'); 
+// Player One Variables
+
+const btnPlayerOne = document.getElementById('roll'); 
+const playerOneResult1 = document.querySelector('.die-1');
+const playerOneResult2 = document.querySelector('.die-2');
+const playerOneResult3 = document.querySelector('.die-3');
+const playerOneResult4 = document.querySelector('.die-4');
+const playerOneResult5 = document.querySelector('.die-5');
+const playerOneGuess = document.querySelector('.guess');
+const playerOneNumberOfDice = document.querySelector('.number-of-dice');
+const playerOneValueOfDice = document.querySelector('.value-of-dice');
 let isBtnClickable = true;
 let isGuessClickable = true;
-const result1 = document.querySelector('.die-1');
-const result2 = document.querySelector('.die-2');
-const result3 = document.querySelector('.die-3');
-const result4 = document.querySelector('.die-4');
-const result5 = document.querySelector('.die-5');
-const guess = document.querySelector('.guess');
-const numberOfDice = document.querySelector('.number-of-dice');
-const valueOfDice = document.querySelector('.value-of-dice');
-let ciao;
+// Player Two Variables
 
+const btnPlayerTwo = document.getElementById('roll-1'); 
+const playerTwoResult1 = document.querySelector('.die-1-1');
+const playerTwoResult2 = document.querySelector('.die-2-1');
+const playerTwoResult3 = document.querySelector('.die-3-1');
+const playerTwoResult4 = document.querySelector('.die-4-1');
+const playerTwoResult5 = document.querySelector('.die-5-1');
+const playerTwoGuess = document.querySelector('.guess');
+const playerTwoNumberOfDice = document.querySelector('.number-of-dice');
+const playerTwoValueOfDice = document.querySelector('.value-of-dice');
+let isBtn1Clickable = true;
+let isGuess1Clickable = true;
+
+
+
+// Adding an event on P1 roll of dice
 
 
 const randomNumberGenerator = () => {
   console.log(isBtnClickable);
-    if(isBtnClickable){
-      isBtnClickable = false;
-      let randomNumber1 = Math.floor(Math.random()* 6 + 1);
-      let randomNumber2 = Math.floor(Math.random()* 6 + 1);
-      let randomNumber3 = Math.floor(Math.random()* 6 + 1);
-      let randomNumber4 = Math.floor(Math.random()* 6 + 1);
-      let randomNumber5 = Math.floor(Math.random()* 6 + 1);
-      result1.textContent = randomNumber1;
-      result2.textContent = randomNumber2;
-      result3.textContent = randomNumber3;
-      result4.textContent = randomNumber4;
-      result5.textContent = randomNumber5;
-      let resultsArray = [randomNumber1, randomNumber2, randomNumber3, randomNumber4, randomNumber5]
-      if(localStorage.getItem('Result Player One') === null){
-        localStorage.setItem('Result Player One', JSON.stringify(resultsArray));
-      }
-      else {
-        return
-      };
+  if(isBtnClickable){
+    isBtnClickable = false;
+    let randomNumber1 = Math.floor(Math.random()* 6 + 1);
+    let randomNumber2 = Math.floor(Math.random()* 6 + 1);
+    let randomNumber3 = Math.floor(Math.random()* 6 + 1);
+    let randomNumber4 = Math.floor(Math.random()* 6 + 1);
+    let randomNumber5 = Math.floor(Math.random()* 6 + 1);
+    playerOneResult1.textContent = randomNumber1;
+    playerOneResult2.textContent = randomNumber2;
+    playerOneResult3.textContent = randomNumber3;
+    playerOneResult4.textContent = randomNumber4;
+    playerOneResult5.textContent = randomNumber5;
+    let resultsArray = [randomNumber1, randomNumber2, randomNumber3, randomNumber4, randomNumber5]
+    if(localStorage.getItem('Result Player One') === null){
+      localStorage.setItem('Result Player One', JSON.stringify(resultsArray));
     }
     else {
-      console.error('Wait for next turn');
-    }
+      return
+    };
+  }
+  else {
+    console.error('Wait for next turn');
+  }
 };
 
-btn.addEventListener('click', randomNumberGenerator);
+btnPlayerOne.addEventListener('click', randomNumberGenerator);
+
+
+// Adding an event of P1 Guess
 
 const checkGuess = function (){
     if(isGuessClickable){
       isGuessClickable = false;
       let resultPlayerOne = JSON.parse(localStorage.getItem('Result Player One'));
       console.log('ciao',resultPlayerOne);
-      let resultFiltered = resultPlayerOne.filter(value => value == valueOfDice.value);
-      console.log(resultFiltered, valueOfDice.value);
-      if(resultFiltered.length == numberOfDice.value){
+      let resultFiltered = resultPlayerOne.filter(value => value == playerOneValueOfDice.value);
+      console.log(resultFiltered, playerOneValueOfDice.value);
+      if(resultFiltered.length == playerOneNumberOfDice.value){
         console.log('You win');
       }
       else {
@@ -60,18 +80,38 @@ const checkGuess = function (){
       else {
         return
       }
+      window.localStorage.clear();
     }
   
 
-guess.addEventListener('click', checkGuess)
+playerOneGuess.addEventListener('click', checkGuess)
 
-// Other types of mouve events 
-// btn.addEventListener('dblclick', randomNumberGenerator);
-// btn.addEventListener('mousedown', randomNumberGenerator);  as soon as the mouse is down
-// btn.addEventListener('mouseup', randomNumberGenerator); as long as the mouse is clicked
-// btn.addEventListener('mouseenter', randomNumberGenerator);
-// btn.addEventListener('mouseleave', randomNumberGenerator);
-// btn.addEventListener('mouseover', randomNumberGenerator);
-// btn.addEventListener('mouseout', randomNumberGenerator);
-// btn.addEventListener('mousemove', randomNumberGenerator); this fires every single time you move the mouse inside the object. Really useful in games to know exactly where your mouse is as you can extrapolate the coordinates of the mouse and place it into the world. 
+
+
+const randomNumberGenerator1 = () => {
+  if(isBtn1Clickable){
+    isBtn1Clickable = false;
+    let randomNumber1 = Math.floor(Math.random()* 6 + 1);
+    let randomNumber2 = Math.floor(Math.random()* 6 + 1);
+    let randomNumber3 = Math.floor(Math.random()* 6 + 1);
+    let randomNumber4 = Math.floor(Math.random()* 6 + 1);
+    let randomNumber5 = Math.floor(Math.random()* 6 + 1);
+    playerTwoResult1.textContent = randomNumber1;
+    playerTwoResult2.textContent = randomNumber2;
+    playerTwoResult3.textContent = randomNumber3;
+    playerTwoResult4.textContent = randomNumber4;
+    playerTwoResult5.textContent = randomNumber5;
+    let resultsArray1 = [randomNumber1, randomNumber2, randomNumber3, randomNumber4, randomNumber5]
+    if(localStorage.getItem('Result Player Two') == null){
+      localStorage.setItem('Result Player Two', JSON.stringify(resultsArray1));
+    }
+    else {
+      return
+    };
+  }
+  else {
+    console.error('Wait for next turn');
+  }
+}
+btnPlayerTwo.addEventListener('click', randomNumberGenerator1);
 

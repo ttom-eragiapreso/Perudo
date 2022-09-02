@@ -10,10 +10,10 @@ body {
     width: 100vw;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
-.main-window {
+.main-window, .main-window-1 {
     display: flex;
     flex-direction: column;
     border: 1px solid black;
@@ -21,21 +21,24 @@ body {
     padding: 20px;
 }
 
-.main-window h1 {
+.main-window h1, .main-window-1 h1 {
     margin-bottom: 10px;
 }
 
-.results {
+.results, .results-1 {
     display: flex;
     font-size: 4rem;
     justify-content: space-between;
 }
 
-.number-of-dice::-webkit-outer-spin-button, .number-of-dice::-webkit-inner-spin-button, .value-of-dice::-webkit-outer-spin-button, .value-of-dice::-webkit-inner-spin-button  {
+.number-of-dice::-webkit-outer-spin-button, .number-of-dice::-webkit-inner-spin-button, 
+.value-of-dice::-webkit-outer-spin-button, .value-of-dice::-webkit-inner-spin-button,
+.number-of-dice-1::-webkit-outer-spin-button, .number-of-dice-1::-webkit-inner-spin-button,
+.value-of-dice-1::-webkit-outer-spin-button, .value-of-dice-1::-webkit-inner-spin-button  {
     -webkit-appearance: none;
 }
 
-.number-of-dice, .value-of-dice {
+.number-of-dice, .value-of-dice, .number-of-dice-1, .value-of-dice-1 {
     width: 30px;
     margin-left: 10px;
 }
