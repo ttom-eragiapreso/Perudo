@@ -62,31 +62,32 @@ btnPlayerOne.addEventListener('click', randomNumberGenerator);
 // Adding an event of P1 Guess
 
 const checkGuess = function (){
-    if(isGuessClickable){
-      isGuessClickable = false;
-      let resultPlayerOne = JSON.parse(localStorage.getItem('Result Player One'));
-      let resultPlayerTwo = JSON.parse(localStorage.getItem('Result Player Two'));
-      let resultPlayerOneFiltered = resultPlayerOne.filter(value => value == playerOneValueOfDice.value);
-      let resultPlayerTwoFiltered = resultPlayerTwo.filter(value => value == playerOneValueOfDice.value);
-      let resultCombinedFiltered = resultPlayerOneFiltered.concat(resultPlayerTwoFiltered);
-      console.log(resultCombinedFiltered);
-      if(resultCombinedFiltered.length >= playerOneNumberOfDice.value){
-        console.log('You win');
-      }
-      else {
-        console.log('You lose');
-      }
-      
-      }
-      else {
-        return
-      }
+  if(isGuessClickable){
+    isGuessClickable = false;
+    let resultPlayerOne = JSON.parse(localStorage.getItem('Result Player One'));
+    let resultPlayerTwo = JSON.parse(localStorage.getItem('Result Player Two'));
+    let resultPlayerOneFiltered = resultPlayerOne.filter(value => value == playerOneValueOfDice.value);
+    let resultPlayerTwoFiltered = resultPlayerTwo.filter(value => value == playerOneValueOfDice.value);
+    let resultCombinedFiltered = resultPlayerOneFiltered.concat(resultPlayerTwoFiltered);
+    console.log(resultCombinedFiltered);
+    if(resultCombinedFiltered.length >= playerOneNumberOfDice.value){
+      console.log('You win');
     }
-  
+    else {
+      console.log('You lose');
+    }
+    
+  }
+  else {
+    return
+  }
+}
+
 
 playerOneGuess.addEventListener('click', checkGuess)
 
 
+// Adding an event on P2 roll of dice
 
 const randomNumberGenerator1 = () => {
   if(isBtn1Clickable){
@@ -115,6 +116,8 @@ const randomNumberGenerator1 = () => {
 }
 btnPlayerTwo.addEventListener('click', randomNumberGenerator1);
 
+// Adding an event of P2 Guess
+
 const checkGuess1 = function (){
   if(isGuess1Clickable){
     isGuess1Clickable = false;
@@ -131,10 +134,10 @@ const checkGuess1 = function (){
       console.log('You lose');
     }
     
-    }
-    else {
-      return
-    }
   }
+  else {
+    return
+  }
+}
 
-  playerTwoGuess.addEventListener('click', checkGuess1);
+playerTwoGuess.addEventListener('click', checkGuess1);
